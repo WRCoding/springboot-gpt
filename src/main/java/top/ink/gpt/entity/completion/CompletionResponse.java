@@ -1,9 +1,12 @@
 package top.ink.gpt.entity.completion;
 
 import lombok.Data;
-import top.ink.gpt.entity.Choice;
-import top.ink.gpt.entity.Response;
-import top.ink.gpt.entity.Usage;
+import top.ink.gpt.entity.common.Choice;
+import top.ink.gpt.entity.common.Response;
+import top.ink.gpt.entity.common.Usage;
+/**
+ * @author wanglongjun
+ */
 @Data
 public class CompletionResponse extends Response {
 

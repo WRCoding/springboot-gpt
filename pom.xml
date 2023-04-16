@@ -30,10 +30,15 @@
             <artifactId>retrofit-spring-boot-starter</artifactId>
             <version>2.3.13</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.unfbx</groupId>-->
+<!--            <artifactId>chatgpt-java</artifactId>-->
+<!--            <version>1.0.7</version>-->
+<!--        </dependency>-->
         <dependency>
-            <groupId>com.unfbx</groupId>
-            <artifactId>chatgpt-java</artifactId>
-            <version>1.0.7</version>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.16</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

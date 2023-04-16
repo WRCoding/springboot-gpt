@@ -4,21 +4,32 @@ import com.github.lianjiatech.retrofit.spring.boot.interceptor.BasePathMatchInte
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+/**
+ * @author wanglongjun
+ */
 @Component
 @Slf4j
 public class RequestAuthorizationIntercept extends BasePathMatchInterceptor {
+
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String BEARER = "Bearer ";
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String JSON = "application/json";
+
+    @Value("${openAi.token}")
+    private String token;
+
     @Override
     protected Response doIntercept(Chain chain) throws IOException {
         Request oldRequest = chain.request();
-        log.info("method: {}, body: {}", oldRequest.method(), oldRequest.body() );
-        Request newRequest = oldRequest.newBuilder().addHeader("Authorization", "Bearer " + "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")
-                .addHeader("Content-Type","application/json")
+        Request newRequest = oldRequest.newBuilder().addHeader(AUTHORIZATION, BEARER + token)
+                .addHeader(CONTENT_TYPE,JSON)
                 .method(oldRequest.method(), oldRequest.body())
                 .build();
-        System.out.println(newRequest.url());
         return chain.proceed(newRequest);
     }
 }
